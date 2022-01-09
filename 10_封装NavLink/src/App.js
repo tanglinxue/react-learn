@@ -4,7 +4,7 @@ import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
 import MyNavLink from './components/MyNavLink'
-import { NavLink, Route, BrowserRouter, Router, Switch, Redirect } from 'react-router-dom'
+import { NavLink, Route, BrowserRouter } from 'react-router-dom'
 import './App.css'
 // 创建并暴露
 export default class App extends Component {
@@ -25,17 +25,13 @@ export default class App extends Component {
               <NavLink className="list-group-item" to="/home">Home</NavLink> */}
               <MyNavLink to="/about"  >About</MyNavLink>
               <MyNavLink to="/home" >Home</MyNavLink>
-
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
-                <Switch>
-                  <Route path='/about' component={About} />
-                  <Route path='/home' component={Home} />
-                  <Redirect to="/about" />
-                </Switch>
+                <Route path='/about' component={About} />
+                <Route path='/home' component={Home} />
               </div>
             </div>
           </div>
