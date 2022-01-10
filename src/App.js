@@ -6,6 +6,7 @@ import Header from './components/Header'
 import MyNavLink from './components/MyNavLink'
 import { NavLink, Route, BrowserRouter, Router, Switch, Redirect } from 'react-router-dom'
 import './App.css'
+
 // 创建并暴露
 export default class App extends Component {
   render() {
