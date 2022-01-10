@@ -1,43 +1,26 @@
-import React, { Component } from 'react'
-import store from '../../redux/store'
-import {createIncrementAction,createDecrementAction,createIncrementAsyncAction} from '../../redux/count_action'
+import React, { Component } from "react";
 
 export default class Count extends Component {
-  // componentDidMount(){
-  //   store.subscribe(()=>{
-  //     this.setState({})
-  //   })
-  // }
-
-  increment = ()=>{
+  increment = () => {
     const value = this.selectNumber.value;
-    store.dispatch(createIncrementAction(value*1))
-  }
-  decrement = ()=>{
+  };
+  decrement = () => {
     const value = this.selectNumber.value;
-    store.dispatch(createDecrementAction(value*1))
-  }
-  incrementOdd = ()=>{
+  };
+  incrementOdd = () => {
     const value = this.selectNumber.value;
-    const Count = store.getState()
-    if(Count%2 !== 0){
-      store.dispatch(createIncrementAction(value*1))
-    }
-   
-  }
-  incrementAsync = ()=>{
+  };
+  incrementAsync = () => {
     const value = this.selectNumber.value;
-    store.dispatch(createIncrementAsyncAction(value*1,500))
-  
-  }
+  };
   render() {
     return (
       <div>
-        <h1>当前求和为:{store.getState()}</h1>
-        <select ref={c=>this.selectNumber = c}>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
+        <h1>当前求和为:0</h1>
+        <select ref={(c) => (this.selectNumber = c)}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
         </select>
         &nbsp;
         <button onClick={this.increment}>+</button> &nbsp;
@@ -45,6 +28,6 @@ export default class Count extends Component {
         <button onClick={this.incrementOdd}>当前求和为奇数再加</button> &nbsp;
         <button onClick={this.incrementAsync}>异步加</button>
       </div>
-    )
+    );
   }
 }
