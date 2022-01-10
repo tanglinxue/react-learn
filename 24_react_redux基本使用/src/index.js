@@ -7,12 +7,15 @@ import { BrowserRouter } from 'react-router-dom'
 import store from './redux/store'
 //引入App
 import App from './App'
-import { Provider } from 'react-redux'
 reactDom.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </Provider>
-  ,
-  document.getElementById('root'))
+  </BrowserRouter>, document.getElementById('root'))
+// 渲染App到页面
+store.subscribe(()=>{
+  reactDom.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>, document.getElementById('root'))
+})
+
