@@ -46,7 +46,7 @@ class Count extends Component {
 }
 
 export default connect(
-  (state) => ({ count: state }),
+  (state) => ({ count: state.countReducer }),
   {
     createIncrementAction,
     createDecrementAction,

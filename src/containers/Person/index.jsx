@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
+import {connect} from 'react-redux'
+import {createAddPersonAction} from '../../redux/actions/person'
 
-export default class Person extends Component {
+ class Person extends Component {
   addPerson = () => {
     const name = this.nameNode.value;
     const age = this.ageNode.value;
     console.log(name, age);
     const personObj = { id: nanoid(), name, age };
+    this.props.createAddPersonAction(personObj)
   };
   render() {
     return (
@@ -23,9 +26,21 @@ export default class Person extends Component {
         ></input>
         <button onClick={this.addPerson}>添加</button>
         <ul>
-          <li>名字1---年龄1</li>
+         {
+           this.props.persons.map(person=>{
+             return <li key={person.id}>{person.name}-{person.age}</li>
+           })
+         }
         </ul>
       </div>
     );
   }
 }
+export default connect(
+  state=>({
+    persons:state.personReducer
+  }),
+  {
+    createAddPersonAction
+  }
+)(Person)
